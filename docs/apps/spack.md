@@ -4,7 +4,7 @@ Spack is a package management tool designed to support multiple versions and con
 
 ## Available
     Mahti: 0.17
-## Usage 
+##  Basic Usage 
 In order to use `spack` one has first to unload all modules  and set the user´s folder where the programs are going to be installed. 
 ```
 module purge
@@ -48,5 +48,6 @@ New packages are installed using the `install` command:
 spack install <package_name>
 ``` 
 
+## Dependencies and Variants
 
 (https://github.com/LLNL/mpiP).
