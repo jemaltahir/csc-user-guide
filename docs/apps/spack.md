@@ -8,34 +8,45 @@ Spack is a package management tool designed to support multiple versions and con
 In order to use `spack` one has first to unload all modules  and set the user´s folder where the programs are going to be installed. 
 ```
 module purge
-export  USER_SPACK_ROOT=/projappl/project_2001659/cristian/my_spack
+export  USER_SPACK_ROOT=/pathto/my_spack
 ```
 Then the module can be load 
 ```
 module load spack/v0.17-user
 ```
-and initialize the spack with the command
+First time when it is used the user´s spack needs to be initialized:
 ```
 user-spack-init 
 ```
 In addition one can set the group which will part of this installation via the environment variable `USER_SPACK_GROUP`.
 
-
-
-pIn the first part of the file is shown basic information about the performance experiment, followed by various statistics per invidual task and as aggregated. 
-If one wants to focus only on specific regions the profilling can be switched on/off. For example in a Fortran code one could do:
-
+The Mahti base installation already comes with several compilers configured:
 ```
-call MPI_INIT( ierr )
-call MPI_PCONTROL( 0 )      
-[ ... ]                    
-call MPI_PCONTROL( 1 )      
-               
-[ ... ]       ! Region of interest              
+$ spack compilers
+==> Available compilers
+-- aocc rhel8-x86_64 --------------------------------------------
+aocc@3.2.0
 
-call MPI_PCONTROL( 0 )      
-[ ... ]                     
-call MPI_FINALIZE( ierr )
+-- gcc rhel8-x86_64 ---------------------------------------------
+gcc@11.2.0  gcc@9.4.0  gcc@8.5.0  gcc@7.5.0
+
+-- intel rhel8-x86_64 -------------------------------------------
+intel@2021.4.0
+
+-- nvhpc rhel8-x86_64 -------------------------------------------
+nvhpc@22.3  nvhpc@21.11
+
+-- oneapi rhel8-x86_64 ------------------------------------------
+oneapi@2021.4.0
+``` 
+The installed packages can be sees using the `find` command:
 ```
-In the above code the debugging is first disabled after the MPI initialization (with `call MPI_CONTROL(0)`)  and later it is switched back for the region of interest.  At the end of the region the profiling is disabled again. In this case the profiler will only collect information for the region between the lines  `call MPI_CONTROL(1)` and  `call MPI_CONTROL(0)`.
-Finally, mpiP has several configurable parameters  can set via the environment variable MPIP. For more details, please consult the related documentation at (https://github.com/LLNL/mpiP).
+spack find
+```
+New packages are installed using the `install` command:
+```
+spack install <pacackage_name>
+``` 
+
+
+(https://github.com/LLNL/mpiP).
