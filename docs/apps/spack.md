@@ -45,7 +45,7 @@ spack find
 ```
 New packages are installed using the `install` command:
 ```
-spack install <pacackage_name>
+spack install <package_name>
 ``` 
 
 
