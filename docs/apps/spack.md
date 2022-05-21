@@ -25,6 +25,8 @@ Installing a package is done  relatively simple using the `install` command:
 spack install <package_name>
 ``` 
 This process involves 3 steps. 
+
+
 The Mahti base installation already comes with several compilers configured:
 ```
 $ spack compilers
